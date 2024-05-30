@@ -11,6 +11,7 @@
     <h1 class="header">Etch-a-Sketch</h1>
     <div class="grid-size-input">
         <form oninput="result.value=resultCopy.value=size.value">
+            <label for="size">Dimension</label>
             <input class="size" name="size" type="range" min="10" max="100" step="1" value="16">
             <p>
                 <output name="result" for="size">16</output> x
@@ -18,5 +19,6 @@
             </p>
         </form>
     </div>
+    <!-- <button class="clear-btn">Clear</button> -->
 </body>
 </html>

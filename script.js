@@ -3,13 +3,16 @@ const container = document.createElement('div');
 const containerWidth = 50;
 
 const sizeInput = document.querySelector('.size');
+// const clearBtn = document.querySelector('.clear-btn');
 
-let viewportWidth = document.documentElement.clientWidth;
-
+// let viewportWidth = document.documentElement.clientWidth;
 
 createDrawField();
+const clearBtn = document.createElement('button');
+clearBtn.textContent = 'Clear';
+document.body.appendChild(clearBtn);
 
-sizeInput.addEventListener('change', (e) => {
+sizeInput.addEventListener('change', () => {
     const cells = document.querySelectorAll('.cell');
     cells.forEach((cell) => {
         cell.remove();
@@ -23,14 +26,21 @@ container.addEventListener('mouseover', (e) => {
     }
 });
 
+clearBtn.addEventListener('click', () => {
+    const cells = document.querySelectorAll('.cell');
+    cells.forEach((cell) => {
+        cell.style.backgroundColor = 'white';
+    });
+});
+
 
 // Functions
-function createCells(containerWidth) {
+function createCells(fieldWidth) {
     let cellsInRow = sizeInput.value;
     for (let i = 0; i < cellsInRow ** 2; i++) {
         const cell = document.createElement('div');
         cell.classList.add('cell');
-        let cellSize = containerWidth / cellsInRow;
+        let cellSize = fieldWidth / cellsInRow;
         cell.style.width = cellSize + 'px';
         cell.style.height = cellSize + 'px';
         container.appendChild(cell);

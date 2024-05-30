@@ -21,6 +21,7 @@
         font-optical-sizing: auto;
         font-weight: 500;
         font-style: normal;
+        color: var(--clr-primary-dark);
     }
     
 }
@@ -35,12 +36,14 @@
 
 @layer decoration {
     body {
+        text-align: center;
         background: linear-gradient(to bottom, var(--clr-primary-light), #FEFAF6);
     }
     .container {
         box-sizing:content-box;
         background-color: white;
         border: 0.5px solid var(--clr-grid);
+        margin-bottom: 20px;
     }
     .cell {
         border: 0.5px solid var(--clr-grid);
@@ -65,32 +68,42 @@
     input[type="range"]::-webkit-slider-runnable-track {
         background: var(--clr-primary-middle);
         height: 0.5rem;
-        border-radius: 5px;
+        border-radius: 2px;
     }
     input[type="range"]::-moz-range-track {
         background: #b6b7b8;
         height: 0.5rem;
-        border-radius: 5px;
+        border-radius: 2px;
     }
     input[type="range"]::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
         border: none;
-        border-radius: 50px;
+        border-radius: 3px;
         margin-top: -6px;
         background-color: var(--clr-primary-beige);
         height: 1.2rem;
-        width: 1.2rem;    
+        width: 0.6rem;    
     }
     input[type="range"]::-moz-range-thumb {
         border: none;
         border-radius: 0;
         margin-top: -12px;
         background-color: var(--clr-primary-beige);
-        height: 2rem;
+        height: 1rem;
         width: 1rem; 
     }
     input[type="range"]:focus {
         outline: none;
+    }
+    button {
+        border: 1px solid var(--clr-primary-beige);
+        border-radius: 3px;
+        padding: 0.35rem 1rem;
+        background: var(--clr-primary-light);
+        cursor: pointer;
+        &:hover {
+            background: white;
+        }
     }
 }
