@@ -8,6 +8,15 @@
     <title>Etch-a-Sketch</title>
 </head>
 <body>
-    <div class="container"></div>
+    <h1 class="header">Etch-a-Sketch</h1>
+    <div class="grid-size-input">
+        <form oninput="result.value=resultCopy.value=size.value">
+            <input class="size" name="size" type="range" min="10" max="100" step="1" value="16">
+            <p>
+                <output name="result" for="size">16</output> x
+                <output name="resultCopy" for="size">16</output>
+            </p>
+        </form>
+    </div>
 </body>
 </html>

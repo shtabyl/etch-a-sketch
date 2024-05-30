@@ -1,12 +1,36 @@
-// const container = document.querySelector('.container');
+// Main
 const container = document.createElement('div');
-let cellSize = 10;
-let cellsInRow = 16;
+const containerWidth = 50;
 
-function createCells() {
+const sizeInput = document.querySelector('.size');
+
+let viewportWidth = document.documentElement.clientWidth;
+
+
+createDrawField();
+
+sizeInput.addEventListener('change', (e) => {
+    const cells = document.querySelectorAll('.cell');
+    cells.forEach((cell) => {
+        cell.remove();
+    });
+    createCells(container.getBoundingClientRect().width - 1);
+});
+
+container.addEventListener('mouseover', (e) => {
+    if (e.target !== container) {
+        e.target.style.backgroundColor = 'aquamarine';
+    }
+});
+
+
+// Functions
+function createCells(containerWidth) {
+    let cellsInRow = sizeInput.value;
     for (let i = 0; i < cellsInRow ** 2; i++) {
         const cell = document.createElement('div');
         cell.classList.add('cell');
+        let cellSize = containerWidth / cellsInRow;
         cell.style.width = cellSize + 'px';
         cell.style.height = cellSize + 'px';
         container.appendChild(cell);
@@ -16,8 +40,7 @@ function createCells() {
 function createDrawField() {
     container.classList.add('container');
     document.body.appendChild(container);
-    container.style.width = cellSize * cellsInRow + 'px';
-    createCells();
+    container.style.width = containerWidth + 'vw';
+    container.style.height = containerWidth + 'vw';
+    createCells(container.getBoundingClientRect().width - 1);
 }
-
-createDrawField();

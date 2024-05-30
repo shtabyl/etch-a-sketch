@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Text:wght@100..900&display=swap');
+
 @layer reset {
     *,
     *::before,
@@ -10,7 +12,15 @@
 
 @layer ui-kti {
     :root {
-        font-family: sans-serif;
+        --clr-primary-dark: #102C57;
+        --clr-primary-light: #FEFAF6;
+        --clr-primary-middle: #EADBC8;
+        --clr-primary-beige: #DAC0A3;
+        --clr-grid: #C7C8CC;
+        font-family: "Big Shoulders Text", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 500;
+        font-style: normal;
     }
     
 }
@@ -18,8 +28,69 @@
 @layer layout {
     .container {
         margin: 0 auto;
-        width: 50svw;
         display: flex;
         flex-wrap: wrap;
+    }
+}
+
+@layer decoration {
+    body {
+        background: linear-gradient(to bottom, var(--clr-primary-light), #FEFAF6);
+    }
+    .container {
+        box-sizing:content-box;
+        background-color: white;
+        border: 0.5px solid var(--clr-grid);
+    }
+    .cell {
+        border: 0.5px solid var(--clr-grid);
+    }
+    .header {
+        color: var(--clr-primary-dark);
+        text-align: center;
+        padding: 30px 0;
+    }
+    .grid-size-input {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    input[type="range"] {
+        -webkit-appearance: none;
+        appearance: none;
+        background: transparent;
+        cursor: pointer;
+        width: 15rem;
+        margin-bottom: 10px;
+    }
+    input[type="range"]::-webkit-slider-runnable-track {
+        background: var(--clr-primary-middle);
+        height: 0.5rem;
+        border-radius: 5px;
+    }
+    input[type="range"]::-moz-range-track {
+        background: #b6b7b8;
+        height: 0.5rem;
+        border-radius: 5px;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        border: none;
+        border-radius: 50px;
+        margin-top: -6px;
+        background-color: var(--clr-primary-beige);
+        height: 1.2rem;
+        width: 1.2rem;    
+    }
+    input[type="range"]::-moz-range-thumb {
+        border: none;
+        border-radius: 0;
+        margin-top: -12px;
+        background-color: var(--clr-primary-beige);
+        height: 2rem;
+        width: 1rem; 
+    }
+    input[type="range"]:focus {
+        outline: none;
     }
 }
