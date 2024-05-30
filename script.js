@@ -3,7 +3,9 @@ const container = document.createElement('div');
 const containerWidth = 50;
 
 const sizeInput = document.querySelector('.size');
-// const clearBtn = document.querySelector('.clear-btn');
+const colorPicker = document.querySelector('.color-picker');
+
+let color = '#000';
 
 // let viewportWidth = document.documentElement.clientWidth;
 
@@ -20,9 +22,13 @@ sizeInput.addEventListener('change', () => {
     createCells(container.getBoundingClientRect().width - 1);
 });
 
+colorPicker.addEventListener('input', (e) => {
+    color = e.target.value;
+});
+
 container.addEventListener('mouseover', (e) => {
     if (e.target !== container) {
-        e.target.style.backgroundColor = 'aquamarine';
+        e.target.style.backgroundColor = color;
     }
 });
 
