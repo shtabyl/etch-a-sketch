@@ -1,0 +1,25 @@
+@layer reset {
+    *,
+    *::before,
+    *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+}
+
+@layer ui-kti {
+    :root {
+        font-family: sans-serif;
+    }
+    
+}
+
+@layer layout {
+    .container {
+        margin: 0 auto;
+        width: 50svw;
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
