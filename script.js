@@ -31,25 +31,19 @@ colorPicker.addEventListener('input', (e) => {
 });
 
 // Drawing
+let mouseDown = false;
+document.body.addEventListener('mousedown', () => mouseDown = true);
+document.body.addEventListener('mouseup', () => mouseDown = false);
+
 container.addEventListener('mouseover', (e) => {
     if (e.target !== container) {
-        e.target.style.backgroundColor = color;
-        let x = e.target.getBoundingClientRect().x;
-        let y = e.target.getBoundingClientRect().y;
-        let element = `${x},${y}`;
-        if (brushMode.checked && opacity[element]) {
-            opacity[element] = 1;
-            e.target.style.opacity = opacity[element];
-        }
-        if (shadowMode.checked) {
-            if (!opacity[element]) {
-                opacity[element] = 0;
-            } 
-            if (opacity[element] < 1) {
-                opacity[element] += 0.1;
-                e.target.style.opacity = opacity[element];
-            }
-        }
+        changeColor(e);
+    }
+});
+
+container.addEventListener('mousedown', (e) => {
+    if (e.target !== container) {
+        changeColor(e);
     }
 });
 
@@ -69,7 +63,8 @@ clearBtn.addEventListener('click', () => {
 // Functions
 function createCells(fieldWidth) {
     let cellsInRow = sizeInput.value;
-    for (let i = 0; i < cellsInRow ** 2; i++) {
+    let size = cellsInRow * cellsInRow;
+    for (let i = 0; i < size; i++) {
         const cell = document.createElement('div');
         cell.classList.add('cell');
         let cellSize = fieldWidth / cellsInRow;
@@ -85,4 +80,27 @@ function createDrawField() {
     container.style.width = containerWidth + 'vw';
     container.style.height = containerWidth + 'vw';
     createCells(container.getBoundingClientRect().width - 1);
+}
+
+function changeColor(e) {
+    if (e.type === 'mouseover' && !mouseDown) {
+        return;
+    }
+    e.target.style.backgroundColor = color;
+    let x = e.target.getBoundingClientRect().x;
+    let y = e.target.getBoundingClientRect().y;
+    let element = `${x},${y}`;
+    if (brushMode.checked && opacity[element]) {
+        opacity[element] = 1;
+        e.target.style.opacity = opacity[element];
+    }
+    if (shadowMode.checked) {
+        if (!opacity[element]) {
+            opacity[element] = 0;
+        } 
+        if (opacity[element] < 1) {
+            opacity[element] += 0.1;
+            e.target.style.opacity = opacity[element];
+        }
+    }
 }
