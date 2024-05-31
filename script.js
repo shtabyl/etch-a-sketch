@@ -12,10 +12,10 @@ const copyrightBox = document.querySelector('.copyright');
 let color = '#102C57';
 let opacity = {};
 
-// let viewportWidth = document.documentElement.clientWidth;
-
 createDrawField();
 
+// Prevent scrolling on mobile inside draw field
+container.addEventListener('touchmove', e => e.preventDefault());
 
 // Change field dimension
 sizeInput.addEventListener('change', () => {
