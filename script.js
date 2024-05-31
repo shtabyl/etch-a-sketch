@@ -59,6 +59,15 @@ clearBtn.addEventListener('click', () => {
     }
 });
 
+// Listen to viewport size
+visualViewport.addEventListener('resize', () => {
+    const cells = document.querySelectorAll('.cell');
+    cells.forEach((cell) => {
+        cell.remove();
+    });
+    createCells(container.getBoundingClientRect().width - 1);
+});
+
 
 // Functions
 function createCells(fieldWidth) {
