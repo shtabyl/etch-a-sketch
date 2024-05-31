@@ -16,7 +16,7 @@
         --clr-primary-light: #FEFAF6;
         --clr-primary-middle: #EADBC8;
         --clr-primary-beige: #DAC0A3;
-        --clr-grid: #dfdfdf;
+        --clr-grid: #f1f1f1;
         font-family: "Big Shoulders Text", sans-serif;
         font-optical-sizing: auto;
         font-weight: 400;
@@ -62,7 +62,7 @@
         align-items: center;
     }
     .change-color {
-        width: 110px;
+        width: 120px;
         margin-right: 10px;
     }
 }
@@ -108,7 +108,7 @@
         border-radius: 2px;
     }
     input[type="range"]::-moz-range-track {
-        background: #b6b7b8;
+        background: var(--clr-primary-middle);
         height: 0.5rem;
         border-radius: 2px;
     }
@@ -124,16 +124,18 @@
     }
     input[type="range"]::-moz-range-thumb {
         border: none;
-        border-radius: 0;
-        margin-top: -12px;
+        border-radius: 3px;
+        margin-top: -6px;
         background-color: var(--clr-primary-beige);
-        height: 1rem;
-        width: 1rem; 
+        height: 1.2rem;
+        width: 0.6rem; 
     }
     input[type="range"]:focus {
         outline: none;
     }
     button {
+        -webkit-appearance: button;
+        text-transform: none;
         border: 1px solid var(--clr-primary-beige);
         border-radius: 3px;
         padding: 0.35rem 1rem;
@@ -171,7 +173,24 @@
             margin-right: 10px;
         }
     }
+    .color-picker {
+        border: 1px solid var(--clr-primary-beige);
+        height: 30px;
+        border-radius: 3px;
+        background: transparent;
+    }
+    .copyright {
+        color: var(--clr-primary-middle);
+        & a {
+            text-decoration: none;
+            color: var(--clr-primary-middle);
+            &:hover {
+                color: var(--clr-primary-beige);
+            }
+        }
+    }
 }
+
 
 @media(max-width: 767px) {
     .form-wrapper {

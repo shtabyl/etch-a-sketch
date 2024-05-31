@@ -8,6 +8,7 @@ const clearBtn = document.querySelector('.clear-btn');
 const brushMode = document.querySelector('#brush-mode');
 const shadowMode = document.querySelector('#shadow-mode');
 const changeModeForm = document.querySelector('.change-mode');
+const copyrightBox = document.querySelector('.copyright');
 let color = '#102C57';
 let opacity = {};
 
@@ -85,7 +86,7 @@ function createCells(fieldWidth) {
 
 function createDrawField() {
     container.classList.add('container');
-    document.body.appendChild(container);
+    document.body.insertBefore(container, copyrightBox);
     container.style.width = containerWidth;
     container.style.height = containerWidth;
     createCells(container.getBoundingClientRect().width - 1);
