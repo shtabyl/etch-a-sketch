@@ -1,6 +1,6 @@
 // Main
 const container = document.createElement('div');
-const containerWidth = 50;
+let containerWidth = 'clamp(270px, 70vw, 600px)';
 
 const sizeInput = document.querySelector('.size');
 const colorPicker = document.querySelector('.color-picker');
@@ -77,8 +77,8 @@ function createCells(fieldWidth) {
 function createDrawField() {
     container.classList.add('container');
     document.body.appendChild(container);
-    container.style.width = containerWidth + 'vw';
-    container.style.height = containerWidth + 'vw';
+    container.style.width = containerWidth;
+    container.style.height = containerWidth;
     createCells(container.getBoundingClientRect().width - 1);
 }
 
