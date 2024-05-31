@@ -38,6 +38,11 @@
     .clear-btn {
         margin-bottom: 10px;
     }
+    .form-wrapper {
+        display: flex;
+        justify-content: center;
+        gap: 10vw;
+    }
 }
 
 @layer decoration {
@@ -61,7 +66,7 @@
     }
     .grid-size-input {
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
     input[type="range"] {
         -webkit-appearance: none;
