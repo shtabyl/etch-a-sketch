@@ -4,16 +4,19 @@ const containerWidth = 50;
 
 const sizeInput = document.querySelector('.size');
 const colorPicker = document.querySelector('.color-picker');
-
-let color = '#000';
+const clearBtn = document.querySelector('.clear-btn');
+const brushMode = document.querySelector('#brush-mode');
+const shadowMode = document.querySelector('#shadow-mode');
+const changeModeForm = document.querySelector('.change-mode');
+let color = '#102C57';
+let opacity = {};
 
 // let viewportWidth = document.documentElement.clientWidth;
 
 createDrawField();
-const clearBtn = document.createElement('button');
-clearBtn.textContent = 'Clear';
-document.body.appendChild(clearBtn);
 
+
+// Change field dimension
 sizeInput.addEventListener('change', () => {
     const cells = document.querySelectorAll('.cell');
     cells.forEach((cell) => {
@@ -22,21 +25,44 @@ sizeInput.addEventListener('change', () => {
     createCells(container.getBoundingClientRect().width - 1);
 });
 
+// Change color
 colorPicker.addEventListener('input', (e) => {
     color = e.target.value;
 });
 
+// Drawing
 container.addEventListener('mouseover', (e) => {
     if (e.target !== container) {
         e.target.style.backgroundColor = color;
+        let x = e.target.getBoundingClientRect().x;
+        let y = e.target.getBoundingClientRect().y;
+        let element = `${x},${y}`;
+        if (brushMode.checked && opacity[element]) {
+            opacity[element] = 1;
+            e.target.style.opacity = opacity[element];
+        }
+        if (shadowMode.checked) {
+            if (!opacity[element]) {
+                opacity[element] = 0;
+            } 
+            if (opacity[element] < 1) {
+                opacity[element] += 0.1;
+                e.target.style.opacity = opacity[element];
+            }
+        }
     }
 });
 
+// Clear field
 clearBtn.addEventListener('click', () => {
     const cells = document.querySelectorAll('.cell');
     cells.forEach((cell) => {
         cell.style.backgroundColor = 'white';
+        cell.style.opacity = 1;
     });
+    for (const prop of Object.getOwnPropertyNames(opacity)) {
+        delete opacity[prop];
+    }
 });
 
 
